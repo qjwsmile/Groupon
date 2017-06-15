@@ -1,0 +1,22 @@
+<RelativeLayout
+    android:background="@drawable/new_comer_guide_fg_2"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.qijianwei.tarena.groupon.fragment.FragmentGuidanceTwo">
+
+
+    <Button
+
+        android:id="@+id/button_guide_two_id"
+        android:background="@drawable/rround_corner"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentRight="true"
+        android:text="跳过"
+        android:textSize="18sp"
+        android:padding="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>
