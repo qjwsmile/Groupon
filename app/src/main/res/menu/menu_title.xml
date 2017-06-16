@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item
+    android:title="写点评"
+    android:icon="@drawable/home_navibar_tips_icon_comment"
+    ></item>
+    <item
+        android:title="添加商户"
+        android:icon="@drawable/home_navibar_tips_icon_store"
+        ></item>
+    <item
+        android:title="扫一扫"
+        android:icon="@drawable/home_navibar_tips_icon_scan"
+        ></item>
+    <item
+        android:title="付款码"
+        android:icon="@drawable/home_add_icon_pay"
+        ></item>
+</menu>

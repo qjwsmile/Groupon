@@ -1,10 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.qijianwei.tarena.groupon.ui.MainActivity">
+    <FrameLayout
+    android:id="@+id/containerid"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"></FrameLayout>
+    <RadioGroup
+        android:paddingBottom="5dp"
+        android:paddingTop="8dp"
+        android:background="#F7F7F7"
+        android:id="@+id/radiofroup_id"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RadioButton
+            android:textColor="@drawable/selector_word"
+            android:drawableTop="@drawable/selector_button_shsouye"
+            android:gravity="center"
+            android:id="@+id/radiobutton_shouye"
+            android:background="@null"
+            android:text="首页"
+            android:textSize="8sp"
+            android:button="@null"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+        <RadioButton
+            android:textSize="8sp"
+            android:textColor="@drawable/selector_word"
+            android:drawableTop="@drawable/selector_button_youhui"
+            android:gravity="center"
+            android:id="@+id/radiobutton_youhui"
+            android:text="品质优惠"
+           android:button="@null"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+        <RadioButton
+            android:textSize="8sp"
+            android:textColor="@drawable/selector_word"
+            android:drawableTop="@drawable/selector_button_faxian"
+            android:gravity="center"
+            android:button="@null"
+            android:id="@+id/radiobutton_faxian"
+            android:text="发现"
+
+            android:background="@null"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+        <RadioButton
+            android:textSize="8sp"
+            android:textColor="@drawable/selector_word"
+            android:drawableTop="@drawable/selector_button_wode"
+            android:gravity="center"
+            android:button="@null"
+            android:id="@+id/radiobutton_wode"
+            android:text="我的"
+            android:background="@null"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+    </RadioGroup>
 
 
-</RelativeLayout>
+</LinearLayout>

@@ -32,4 +32,5 @@ dependencies {
     compile project(':viewpagerIndicator_library')
     compile 'com.android.support:support-v4:25.1.1'
     compile 'com.android.support:design:25.1.1'
+    compile project(':pullToRefresh_Library')
 }

@@ -24,7 +24,7 @@ public class SplashActivity extends Activity {
                 //读取偏好设置文件中的值
                 //根据是否第一次使用进行相应的界面跳转
                 Intent intent;
-                if(true){
+                if(sp.isFirst()){
                     //向新手指导页跳转
                     intent=new Intent(SplashActivity.this,GuideActivity.class);
                     sp.setFirst(false);

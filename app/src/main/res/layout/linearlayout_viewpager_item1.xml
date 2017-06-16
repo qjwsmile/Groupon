@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:drawableTop="@drawable/ic_home_food"
+            android:gravity="center"
+            android:text="美食"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+        <TextView
+
+            android:drawableTop="@drawable/ic_home_shoppingmall"
+            android:gravity="center"
+            android:text="电影/演出"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:drawableTop="@drawable/ic_home_hotel"
+            android:gravity="center"
+            android:text="酒店"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:drawableTop="@drawable/ic_home_relax"
+            android:gravity="center"
+            android:text="休闲娱乐"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:drawableTop="@drawable/ic_home_takeaway"
+            android:gravity="center"
+            android:text="外卖"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView" />
+
+        <TextView
+
+            android:drawableTop="@drawable/ic_home_jingdian0528"
+            android:gravity="center"
+            android:text="旅游出行"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:drawableTop="@drawable/ic_home_liren"
+            android:gravity="center"
+            android:text="丽人/美发"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:drawableTop="@drawable/ic_home_zhoubianyou"
+            android:gravity="center"
+            android:text="周边游"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

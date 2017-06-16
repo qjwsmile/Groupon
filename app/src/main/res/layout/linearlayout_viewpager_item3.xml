@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:drawableTop="@drawable/ic_home_ktv"
+            android:gravity="center"
+            android:text="KTV"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+        <TextView
+
+            android:drawableTop="@drawable/ic_home_frontpage"
+            android:gravity="center"
+            android:text="医疗保险"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:drawableTop="@drawable/ic_home_coffee"
+            android:gravity="center"
+            android:text="温泉"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:drawableTop="@drawable/ic_home_car"
+            android:gravity="center"
+            android:text="爱车"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:drawableTop="@drawable/ic_home_book"
+            android:gravity="center"
+            android:text="学习培训"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView" />
+
+        <TextView
+
+            android:drawableTop="@drawable/ic_home_bangdan_green"
+            android:gravity="center"
+            android:text="宠物"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:drawableTop="@drawable/ic_home_jiazhuang"
+            android:gravity="center"
+            android:text="家洁"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:drawableTop="@drawable/ic_home_more"
+            android:gravity="center"
+            android:text="全部分类"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>
