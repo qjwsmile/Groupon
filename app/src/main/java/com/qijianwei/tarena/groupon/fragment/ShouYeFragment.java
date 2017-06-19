@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,9 +19,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.qijianwei.tarena.groupon.entity.Group;
+import com.qijianwei.tarena.groupon.entity.Group2;
+import com.qijianwei.tarena.groupon.util.HttpUtil;
 import com.qijianwei.tarena.groupon.R;
 import com.qijianwei.tarena.groupon.ui.CityActivity;
-import com.viewpagerindicator.CirclePageIndicator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -187,5 +190,22 @@ public class ShouYeFragment extends Fragment {
         datas.add("aaa");
         datas.add("aaa");
         datas.add("aaa");
+        adapter.notifyDataSetChanged();
+        //HttpUtil.testHttpURLConnection();
+        //HttpUtil.testVolley(getActivity());
+       // HttpUtil.testRetrogit();
+        HttpUtil.httpGroup2Load(getActivity(), tvcity.getText().toString(), new HttpUtil.GroupListener2() {
+            @Override
+            public void onGroupLoadEnd(Group2 group2) {
+                Log.i("TAG","group2-----------"+group2.getId_list());
+                HttpUtil.httpGroupLoad(getActivity(), tvcity.getText().toString(), group2, new HttpUtil.GroupListener() {
+                    @Override
+                    public void onGroupLoadEnd(Group group) {
+                        Log.i("TAG","group2-----------"+group.getDeals());
+                    }
+                });
+            }
+        });
+
     }
 }
