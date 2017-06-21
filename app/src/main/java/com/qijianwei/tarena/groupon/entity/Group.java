@@ -8,16 +8,6 @@ import java.util.List;
 
 public class Group {
 
-
-    @Override
-    public String toString() {
-        return "Group{" +
-                "status='" + status + '\'' +
-                ", count=" + count +
-                ", deals=" + deals +
-                '}';
-    }
-
     /**
      * status : OK
      * count : 1
@@ -53,36 +43,6 @@ public class Group {
     }
 
     public static class DealsBean {
-
-        @Override
-        public String toString() {
-            return "DealsBean{" +
-                    "deal_id='" + deal_id + '\'' +
-                    ", title='" + title + '\'' +
-                    ", description='" + description + '\'' +
-                    ", city='" + city + '\'' +
-                    ", list_price=" + list_price +
-                    ", current_price=" + current_price +
-                    ", purchase_count=" + purchase_count +
-                    ", purchase_deadline='" + purchase_deadline + '\'' +
-                    ", publish_date='" + publish_date + '\'' +
-                    ", details='" + details + '\'' +
-                    ", image_url='" + image_url + '\'' +
-                    ", s_image_url='" + s_image_url + '\'' +
-                    ", is_popular=" + is_popular +
-                    ", restrictions=" + restrictions +
-                    ", notice='" + notice + '\'' +
-                    ", deal_url='" + deal_url + '\'' +
-                    ", deal_h5_url='" + deal_h5_url + '\'' +
-                    ", commission_ratio=" + commission_ratio +
-                    ", regions=" + regions +
-                    ", categories=" + categories +
-                    ", more_image_urls=" + more_image_urls +
-                    ", more_s_image_urls=" + more_s_image_urls +
-                    ", businesses=" + businesses +
-                    '}';
-        }
-
         /**
          * deal_id : 1-5097286
          * title : Le Camelia法式浪漫拿破仑
@@ -121,8 +81,8 @@ public class Group {
         private String title;
         private String description;
         private String city;
-        private int list_price;
-        private int current_price;
+        private double list_price;
+        private double current_price;
         private int purchase_count;
         private String purchase_deadline;
         private String publish_date;
@@ -173,19 +133,19 @@ public class Group {
             this.city = city;
         }
 
-        public int getList_price() {
+        public double getList_price() {
             return list_price;
         }
 
-        public void setList_price(int list_price) {
+        public void setList_price(double list_price) {
             this.list_price = list_price;
         }
 
-        public int getCurrent_price() {
+        public double getCurrent_price() {
             return current_price;
         }
 
-        public void setCurrent_price(int current_price) {
+        public void setCurrent_price(double current_price) {
             this.current_price = current_price;
         }
 
@@ -326,16 +286,6 @@ public class Group {
         }
 
         public static class RestrictionsBean {
-
-            @Override
-            public String toString() {
-                return "RestrictionsBean{" +
-                        "is_reservation_required=" + is_reservation_required +
-                        ", is_refundable=" + is_refundable +
-                        ", special_tips='" + special_tips + '\'' +
-                        '}';
-            }
-
             /**
              * is_reservation_required : 1
              * is_refundable : 1
@@ -396,21 +346,6 @@ public class Group {
         }
 
         public static class BusinessesBean {
-
-            @Override
-            public String toString() {
-                return "BusinessesBean{" +
-                        "name='" + name + '\'' +
-                        ", id=" + id +
-                        ", city='" + city + '\'' +
-                        ", address='" + address + '\'' +
-                        ", latitude=" + latitude +
-                        ", longitude=" + longitude +
-                        ", url='" + url + '\'' +
-                        ", h5_url='" + h5_url + '\'' +
-                        '}';
-            }
-
             /**
              * name : Le Camelia(月星环球港店)
              * id : 13668043

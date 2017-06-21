@@ -11,10 +11,11 @@
     android:id="@+id/containerid"
     android:layout_width="match_parent"
     android:layout_height="0dp"
-    android:layout_weight="1"></FrameLayout>
+    android:layout_weight="1">
+    </FrameLayout>
     <RadioGroup
         android:paddingBottom="5dp"
-        android:paddingTop="8dp"
+        android:paddingTop="5dp"
         android:background="#F7F7F7"
         android:id="@+id/radiofroup_id"
         android:orientation="horizontal"
@@ -27,13 +28,13 @@
             android:id="@+id/radiobutton_shouye"
             android:background="@null"
             android:text="首页"
-            android:textSize="8sp"
+            android:textSize="10sp"
             android:button="@null"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content" />
         <RadioButton
-            android:textSize="8sp"
+            android:textSize="10sp"
             android:textColor="@drawable/selector_word"
             android:drawableTop="@drawable/selector_button_youhui"
             android:gravity="center"
@@ -44,7 +45,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content" />
         <RadioButton
-            android:textSize="8sp"
+            android:textSize="10sp"
             android:textColor="@drawable/selector_word"
             android:drawableTop="@drawable/selector_button_faxian"
             android:gravity="center"
@@ -57,7 +58,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content" />
         <RadioButton
-            android:textSize="8sp"
+            android:textSize="10sp"
             android:textColor="@drawable/selector_word"
             android:drawableTop="@drawable/selector_button_wode"
             android:gravity="center"

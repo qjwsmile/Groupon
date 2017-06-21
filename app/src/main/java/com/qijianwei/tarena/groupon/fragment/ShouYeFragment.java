@@ -17,10 +17,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Response;
+import com.google.gson.Gson;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.qijianwei.tarena.groupon.adapter.DealAdapter;
 import com.qijianwei.tarena.groupon.entity.Group;
-import com.qijianwei.tarena.groupon.entity.Group2;
 import com.qijianwei.tarena.groupon.util.HttpUtil;
 import com.qijianwei.tarena.groupon.R;
 import com.qijianwei.tarena.groupon.ui.CityActivity;
@@ -31,6 +35,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import retrofit2.Call;
+import retrofit2.Callback;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -51,9 +57,11 @@ public class ShouYeFragment extends Fragment {
     @BindView(R.id.pulltorefresh_listview_shouye)
     PullToRefreshListView  pullToRefreshListView;
     ListView listView;
-    ArrayAdapter<String> adapter;
-    List<String> datas;
-    private View vHead1;
+    List<Group.DealsBean> datas;
+    DealAdapter adapter;
+
+    //private View vHead1;
+
 
     public ShouYeFragment() {
 
@@ -84,7 +92,8 @@ public class ShouYeFragment extends Fragment {
 
     private void setlistview() {
         listView=pullToRefreshListView.getRefreshableView();
-
+        datas = new ArrayList<Group.DealsBean>();
+        adapter = new DealAdapter(getActivity(),datas);
         //为ListView添加若干个头部
         LayoutInflater inflater = LayoutInflater.from(getActivity());
 
@@ -98,11 +107,14 @@ public class ShouYeFragment extends Fragment {
         listView.addHeaderView(listHeaderAds);
         listView.addHeaderView(listHeaderCategories);
         listView.addHeaderView(listHeaderRecommend);
-
-        datas=new ArrayList<String>();
-        adapter=new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,datas);
         listView.setAdapter(adapter);
         ininListHeaderIcons(listHeaderIcons);
+        pullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
+            @Override
+            public void onRefresh(PullToRefreshBase<ListView> refreshView) {
+                refresh();
+            }
+        });
     }
     //实现Viewpage滑动
     private void ininListHeaderIcons(final View listHeaderIcons) {
@@ -187,23 +199,47 @@ public class ShouYeFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        datas.add("aaa");
-        datas.add("aaa");
-        datas.add("aaa");
-        adapter.notifyDataSetChanged();
-        //HttpUtil.testHttpURLConnection();
-        //HttpUtil.testVolley(getActivity());
-       // HttpUtil.testRetrogit();
-        HttpUtil.httpGroup2Load(getActivity(), tvcity.getText().toString(), new HttpUtil.GroupListener2() {
+        refresh();
+    }
+
+    private void refresh() {
+
+//        HttpUtil.getDailyDealsByVolley(getActivity(), tvcity.getText().toString(), new Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String s) {
+//                if (s != null) {
+//                    Gson gson = new Gson();
+//                    Group group = gson.fromJson(s, Group.class);
+//                    List<Group.DealsBean> deals = group.getDeals();
+//                    adapter.addAll(deals, true);
+//                }else {
+//                    //今日无新增团购内容
+//                    Toast.makeText(getActivity(), "今日无新增团购内容", Toast.LENGTH_SHORT).show();
+//                }
+//                pullToRefreshListView.onRefreshComplete();
+//            }
+//        });
+
+        HttpUtil.getDailyDealsByRetrofit2(tvcity.getText().toString(), new Callback<Group>() {
             @Override
-            public void onGroupLoadEnd(Group2 group2) {
-                Log.i("TAG","group2-----------"+group2.getId_list());
-                HttpUtil.httpGroupLoad(getActivity(), tvcity.getText().toString(), group2, new HttpUtil.GroupListener() {
-                    @Override
-                    public void onGroupLoadEnd(Group group) {
-                        Log.i("TAG","group2-----------"+group.getDeals());
-                    }
-                });
+            public void onResponse(Call<Group> call, retrofit2.Response<Group> response) {
+                if(response!=null){
+
+
+                    Group group = response.body();
+                    List<Group.DealsBean> deals = group.getDeals();
+                    adapter.addAll(deals,true);
+
+                }else{
+                    Toast.makeText(getActivity(), "今日无新增团购内容", Toast.LENGTH_SHORT).show();
+                }
+                pullToRefreshListView.onRefreshComplete();
+            }
+
+            @Override
+            public void onFailure(Call<Group> call, Throwable throwable) {
+                Log.d("TAG", "onFailure: "+throwable.getMessage());
+                pullToRefreshListView.onRefreshComplete();
             }
         });
 

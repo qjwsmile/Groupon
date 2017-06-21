@@ -5,17 +5,14 @@ package com.qijianwei.tarena.groupon.util;
  */
 
 import android.content.Context;
+import android.support.v7.util.SortedList;
 import android.util.Log;
+import android.widget.ImageView;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import com.google.gson.Gson;
-import com.qijianwei.tarena.groupon.config.Config;
+import com.android.volley.Response;
+import com.qijianwei.tarena.groupon.R;
 import com.qijianwei.tarena.groupon.entity.Group;
-import com.qijianwei.tarena.groupon.entity.Group2;
-import com.qijianwei.tarena.groupon.util.VolleyClient;
+import com.squareup.picasso.Picasso;
 
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -31,11 +28,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-import retrofit2.Call;
 import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 /**
  * 网络访问工具类
@@ -173,67 +166,21 @@ public class HttpUtil {
     public static void testRetrogit(){
         RetrogitClient.getInstance().test();
     }
-    public static void  httpGroup2Load(final Context context, String cityName, final GroupListener2 listener2 ){
-        try {
 
-            final Map<String,String> params=new HashMap<>();
-            params.put("city",cityName);
-            cityName=URLEncoder.encode(cityName,"utf8");
-            String url= Config.TUANGOUURL+"city="+cityName+"&appkey="+APPKEY+"&sign="+getSign(APPKEY,APPSECRET,params);
-            RequestQueue queue= Volley.newRequestQueue(context);
-            StringRequest request=new StringRequest(url, new com.android.volley.Response.Listener<String>() {
-                @Override
-                public void onResponse(String s) {
-                    Gson gson=new Gson();
-                   Group2 group2 = gson.fromJson(s,Group2.class);
-
-                    listener2.onGroupLoadEnd(group2);
-                }
-            }, new com.android.volley.Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError volleyError) {
-
-                }
-            });
-            queue.add(request);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public static void getDailyDealsByVolley(Context context,String city, Response.Listener<String> listener){
+        VolleyClient.getInstance(context).getDailyDeals(city,listener);
     }
-    public interface GroupListener2{
-        public void onGroupLoadEnd(Group2 group);
+    public static void getDailyDealsByRetrofit(String city, Callback<String> callback){
+        RetrogitClient.getInstance().getDailyDeals(city,callback);
     }
-    public interface GroupListener{
-        public void onGroupLoadEnd(Group group);
+    public static void getDailyDealsByRetrofit2(String city, Callback<Group> callback){
+        RetrogitClient.getInstance().getDailyDeals3(city,callback);
     }
 
-
-    public static void  httpGroupLoad(Context context, String cityName, Group2 group2, final GroupListener listener){
-            String batch="";
-    for (int i=0;i<40;i++){
-        batch=batch+group2.getId_list().get(i)+",";
+    public static void loadImage(Context context,String url,ImageView iv){
+        VolleyClient.getInstance(context).loadImage(url,iv);
+    }public static void loadImageRetrogit(Context context,String url,ImageView iv){
+        Picasso.with(context).load(url).placeholder(R.drawable.bucket_no_picture).error(R.drawable.bucket_no_picture).into(iv);
     }
-    batch=batch.substring(0,batch.length()-1);
-        final Map<String,String> params=new HashMap<>();
-            params.put("city",cityName);
 
-        String  batchurl=Config.BATCH+batch+"&appkey="+APPKEY+"&sign="+getSign(APPKEY,APPSECRET,params);
-        Log.i("TAG","BATCH-----------"+batchurl);
-    RequestQueue que=Volley.newRequestQueue(context);
-    StringRequest reque=new StringRequest(batchurl, new com.android.volley.Response.Listener<String>() {
-        @Override
-        public void onResponse(String s) {
-            Gson gs=new Gson();
-            Group group=gs.fromJson(s,Group.class);
-
-            listener.onGroupLoadEnd(group);
-        }
-    }, new com.android.volley.Response.ErrorListener() {
-        @Override
-        public void onErrorResponse(VolleyError volleyError) {
-
-        }
-    });
-    que.add(reque);
-    }
 }
