@@ -11,6 +11,7 @@ import android.widget.ImageView;
 
 import com.android.volley.Response;
 import com.qijianwei.tarena.groupon.R;
+import com.qijianwei.tarena.groupon.entity.City;
 import com.qijianwei.tarena.groupon.entity.Group;
 import com.squareup.picasso.Picasso;
 
@@ -179,8 +180,14 @@ public class HttpUtil {
 
     public static void loadImage(Context context,String url,ImageView iv){
         VolleyClient.getInstance(context).loadImage(url,iv);
-    }public static void loadImageRetrogit(Context context,String url,ImageView iv){
+    }
+    public static void loadImageRetrogit(Context context,String url,ImageView iv){
         Picasso.with(context).load(url).placeholder(R.drawable.bucket_no_picture).error(R.drawable.bucket_no_picture).into(iv);
     }
-
+    public static void getCitiesByVolley(Context context,Response.Listener<String> listener){
+        VolleyClient.getInstance(context).getCities(listener);
+    }
+    public static void getCitiesByRetrofit(Callback<City> call){
+        RetrogitClient.getInstance().getCity(call);
+    }
 }

@@ -24,6 +24,7 @@ import com.google.gson.Gson;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.qijianwei.tarena.groupon.adapter.DealAdapter;
+import com.qijianwei.tarena.groupon.entity.City;
 import com.qijianwei.tarena.groupon.entity.Group;
 import com.qijianwei.tarena.groupon.util.HttpUtil;
 import com.qijianwei.tarena.groupon.R;
@@ -199,6 +200,7 @@ public class ShouYeFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+
         refresh();
     }
 

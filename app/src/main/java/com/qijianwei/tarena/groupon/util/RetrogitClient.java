@@ -3,6 +3,7 @@ package com.qijianwei.tarena.groupon.util;
 import android.util.Log;
 
 import com.qijianwei.tarena.groupon.config.Config;
+import com.qijianwei.tarena.groupon.entity.City;
 import com.qijianwei.tarena.groupon.entity.Group;
 
 import org.json.JSONArray;
@@ -261,7 +262,13 @@ public class RetrogitClient {
             Log.d("TAG", "原始请求路径------> "+urlString);
 
             StringBuilder sb = new StringBuilder(urlString);
-            sb.append("&").append("appkey=").append(HttpUtil.APPKEY);
+            if(set.size()==0){
+                //意味着原有请求路径中没有参数
+                sb.append("?");
+            }else{
+                sb.append("&");
+            }
+            sb.append("appkey=").append(HttpUtil.APPKEY);
             sb.append("&").append("sign=").append(sign);
             //http://baseurl/deal/get_daily_new_id_list?city=xxx&date=xxx&appkey=xxx&sign=xxx
             Log.d("TAG", "新的请求路径------>: "+sb.toString());
@@ -270,6 +277,9 @@ public class RetrogitClient {
             return chain.proceed(newRequest);
         }
     }
-
+    public void getCity(Callback<City> callback){
+        Call<City> city1 = netService.getCities();
+        city1.enqueue(callback);
+    }
 
 }

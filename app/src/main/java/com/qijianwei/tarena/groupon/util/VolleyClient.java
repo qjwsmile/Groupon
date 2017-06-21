@@ -16,6 +16,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.qijianwei.tarena.groupon.R;
+import com.qijianwei.tarena.groupon.entity.City;
 import com.qijianwei.tarena.groupon.entity.Group;
 
 import org.json.JSONArray;
@@ -49,7 +50,7 @@ public class VolleyClient {
     RequestQueue queue;
 
     ImageLoader imageLoader;
-    private VolleyClient(Context context) {
+    public VolleyClient(Context context) {
         queue = Volley.newRequestQueue(context);
         imageLoader = new ImageLoader(queue, new ImageLoader.ImageCache() {
             //least recently use
@@ -176,5 +177,15 @@ public class VolleyClient {
         protected void deliverResponse(Group group) {
             listener.onResponse(group);
         }
+
+    }
+
+    public void getCities(Response.Listener<String> listener){
+
+        Map<String,String> params = new HashMap<String,String>();
+        String url = HttpUtil.getURL("http://api.dianping.com/v1/metadata/get_cities_with_businesses",params);
+        StringRequest req = new StringRequest(url,listener,null);
+        queue.add(req);
+
     }
  }

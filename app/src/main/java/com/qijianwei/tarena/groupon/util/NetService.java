@@ -1,6 +1,7 @@
 package com.qijianwei.tarena.groupon.util;
 
 
+import com.qijianwei.tarena.groupon.entity.City;
 import com.qijianwei.tarena.groupon.entity.Group;
 
 import java.util.Map;
@@ -30,4 +31,6 @@ public interface NetService {
 
     @GET("deal/get_batch_deals_by_id")
     public Call<Group> getDailyDeals3(@QueryMap Map<String,String> params);
+    @GET("metadata/get_cities_with_businesses")
+    public Call<City> getCities();
 }
