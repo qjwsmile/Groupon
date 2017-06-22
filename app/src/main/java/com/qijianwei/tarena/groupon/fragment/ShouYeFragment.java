@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,9 +24,11 @@ import com.android.volley.Response;
 import com.google.gson.Gson;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.qijianwei.tarena.groupon.adapter.CityAdapter;
 import com.qijianwei.tarena.groupon.adapter.DealAdapter;
 import com.qijianwei.tarena.groupon.entity.City;
 import com.qijianwei.tarena.groupon.entity.Group;
+import com.qijianwei.tarena.groupon.ui.SearcHActivity;
 import com.qijianwei.tarena.groupon.util.HttpUtil;
 import com.qijianwei.tarena.groupon.R;
 import com.qijianwei.tarena.groupon.ui.CityActivity;
@@ -38,6 +41,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Callback;
+
+import static android.app.Activity.RESULT_OK;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -53,7 +58,6 @@ public class ShouYeFragment extends Fragment {
     //右上角+号
     @BindView(R.id.iamgeview_shouye_add)
     ImageView imageView_add;
-
 
     @BindView(R.id.pulltorefresh_listview_shouye)
     PullToRefreshListView  pullToRefreshListView;
@@ -79,7 +83,8 @@ public class ShouYeFragment extends Fragment {
     //点击北京跳转
     @OnClick(R.id.ll_header_left_container)
     public void jumpToCity(View view){
-        startActivity(new Intent(getActivity(), CityActivity.class));
+        Intent intent = new Intent(getActivity(), CityActivity.class);
+        startActivityForResult(intent,101);
     }
     //点击+号弹出menu
     @OnClick(R.id.iamgeview_shouye_add)
@@ -90,6 +95,7 @@ public class ShouYeFragment extends Fragment {
             mennuLayout.setVisibility(View.VISIBLE);
         }
     }
+
 
     private void setlistview() {
         listView=pullToRefreshListView.getRefreshableView();
@@ -196,11 +202,17 @@ public class ShouYeFragment extends Fragment {
         });
     }
 
-
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && requestCode == 101) {
+            String city = data.getStringExtra("city");
+            tvcity.setText(city);
+        }
+    }
     @Override
     public void onResume() {
         super.onResume();
-
         refresh();
     }
 

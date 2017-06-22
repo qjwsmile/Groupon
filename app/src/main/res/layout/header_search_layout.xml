@@ -3,8 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="60dp"
     android:background="#fff0f0f0"
-   >
-   
+    >
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/yy_calendar_icon_previous"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="16dp"/>
+
     <LinearLayout
         android:layout_width="0dp"
         android:layout_weight="1"
@@ -14,9 +21,9 @@
         android:layout_marginRight="15dp"
         android:background="@drawable/round_corner_border"
         >
-        
-        
-        <ImageView 
+
+
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/navibar_search_icon_search"
@@ -24,28 +31,30 @@
             android:layout_marginRight="5dp"
             android:layout_gravity="center_vertical"
             />
-        
-        <TextView 
-            android:id="@+id/tv_city_search"
+
+        <EditText
+            android:id="@+id/et_search"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:clickable="true"
             android:gravity="center_vertical"
-            android:hint="请输入商户、地点"
+            android:hint="城市名、拼音..."
+            android:background="@null"
+            android:padding="3dp"
             android:layout_gravity="center_vertical"
-            android:textSize="14sp"            
+            android:textSize="14sp"
             />
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
+
+
+
+
     </LinearLayout>
 
 </LinearLayout>
