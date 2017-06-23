@@ -21,6 +21,7 @@ import com.qijianwei.tarena.groupon.fragment.ShouYeFragment;
 import com.qijianwei.tarena.groupon.util.DBUtil;
 import com.qijianwei.tarena.groupon.util.HttpUtil;
 import com.qijianwei.tarena.groupon.util.PinYinUtil;
+import com.qijianwei.tarena.groupon.view.MyLetterView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -37,6 +38,8 @@ import retrofit2.Response;
 public class CityActivity extends Activity {
     @BindView(R.id.rv_city_cities)
     RecyclerView recyclerView;
+    @BindView(R.id. mlv_city)
+    MyLetterView myLetterView;
     //适配器
     CityAdapter adapter;
     //数据源
@@ -50,6 +53,24 @@ public class CityActivity extends Activity {
         ButterKnife.bind(this);
 
         initRecyclerView();
+        myLetterView.setOnTouchLetterListener(new MyLetterView.OnTouchLetterListener() {
+            @Override
+            public void onTouchLetter(MyLetterView view, String letter) {
+
+                LinearLayoutManager manager = (LinearLayoutManager) recyclerView.getLayoutManager();
+
+                if("热门".equals(letter)){
+                    manager.scrollToPosition(0);
+                }else{
+                    int position = adapter.getPositionForSection(letter.charAt(0));
+                    if(adapter.getHeaderView()!=null){
+                        position += 1;
+                    }
+                    manager.scrollToPositionWithOffset(position,0);
+                }
+
+            }
+        });
     }
 
     private void initRecyclerView() {

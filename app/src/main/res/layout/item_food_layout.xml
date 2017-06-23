@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:orientation="horizontal" >
+
+    <ImageView
+        android:id="@+id/iv_item_food_image"
+        android:layout_width="120dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/bucket_no_picture" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tv_item_food_name"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:text="西部马华牛肉面(潘家园店)"
+                android:singleLine="true"
+                android:textColor="#ff000000"
+                android:textSize="14sp" />
+        </LinearLayout>
+<LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:layout_marginLeft="5dp"
+        android:id="@+id/imageview_food_start"
+        android:src="@drawable/movie_star10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginLeft="5dp"
+        android:id="@+id/tv_item_food_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="855"
+        android:textColor="#ff6e6e6e"
+        android:textSize="14sp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="条"
+        android:textColor="#ff6e6e6e"
+        android:textSize="14sp" />
+
+</LinearLayout>
+<TextView
+    android:layout_marginLeft="5dp"
+    android:id="@+id/textview_cuisine"
+    android:layout_marginTop="3dp"
+    android:text="清真菜"
+    android:textSize="12sp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:text="￥"
+                android:textSize="16sp" />
+            <TextView
+                android:id="@+id/tv_item_food_money"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="36"
+                android:textSize="16sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="人"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_item_deal_sellcount"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|right"
+                android:paddingRight="5dp"
+                android:text="十八里店100m"
+                android:textColor="#ff6e6e6e"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

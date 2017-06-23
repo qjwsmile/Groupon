@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import com.android.volley.Response;
 import com.qijianwei.tarena.groupon.R;
 import com.qijianwei.tarena.groupon.entity.City;
+import com.qijianwei.tarena.groupon.entity.Food;
 import com.qijianwei.tarena.groupon.entity.Group;
 import com.squareup.picasso.Picasso;
 
@@ -190,4 +191,9 @@ public class HttpUtil {
     public static void getCitiesByRetrofit(Callback<City> call){
         RetrogitClient.getInstance().getCity(call);
     }
+    public static void getFoodByRetrofit(String city,Callback<Food> call){
+       RetrogitClient.getInstance().getfood(city,call);
+    }
+
+
 }

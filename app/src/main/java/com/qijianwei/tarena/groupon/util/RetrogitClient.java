@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.qijianwei.tarena.groupon.config.Config;
 import com.qijianwei.tarena.groupon.entity.City;
+import com.qijianwei.tarena.groupon.entity.Food;
 import com.qijianwei.tarena.groupon.entity.Group;
 
 import org.json.JSONArray;
@@ -280,6 +281,13 @@ public class RetrogitClient {
     public void getCity(Callback<City> callback){
         Call<City> city1 = netService.getCities();
         city1.enqueue(callback);
+    }
+    public void getfood(String city,Callback<Food> callback){
+
+        Map<String,String> params=new HashMap<>();
+        params.put("city",city);
+        Call<Food> food = netService.getFood(params);
+        food.enqueue(callback);
     }
 
 }

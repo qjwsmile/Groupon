@@ -2,6 +2,7 @@ package com.qijianwei.tarena.groupon.util;
 
 
 import com.qijianwei.tarena.groupon.entity.City;
+import com.qijianwei.tarena.groupon.entity.Food;
 import com.qijianwei.tarena.groupon.entity.Group;
 
 import java.util.Map;
@@ -33,4 +34,6 @@ public interface NetService {
     public Call<Group> getDailyDeals3(@QueryMap Map<String,String> params);
     @GET("metadata/get_cities_with_businesses")
     public Call<City> getCities();
+    @GET("http://api.dianping.com/v1/business/find_businesses")
+    public Call<Food> getFood(@QueryMap Map<String,String> params);
 }

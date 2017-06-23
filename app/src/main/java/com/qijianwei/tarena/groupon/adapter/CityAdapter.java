@@ -112,7 +112,9 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.MyViewHolder> 
     private int getDataIndex(int position) {
         return headerView==null?position:position-1;
     }
-
+    public View getHeaderView(){
+        return headerView;
+    }
     @Override
     public int getItemCount() {
         return datas.size();

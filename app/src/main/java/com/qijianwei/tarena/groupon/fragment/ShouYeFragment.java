@@ -28,6 +28,7 @@ import com.qijianwei.tarena.groupon.adapter.CityAdapter;
 import com.qijianwei.tarena.groupon.adapter.DealAdapter;
 import com.qijianwei.tarena.groupon.entity.City;
 import com.qijianwei.tarena.groupon.entity.Group;
+import com.qijianwei.tarena.groupon.ui.FoodActivity;
 import com.qijianwei.tarena.groupon.ui.SearcHActivity;
 import com.qijianwei.tarena.groupon.util.HttpUtil;
 import com.qijianwei.tarena.groupon.R;
@@ -58,6 +59,7 @@ public class ShouYeFragment extends Fragment {
     //右上角+号
     @BindView(R.id.iamgeview_shouye_add)
     ImageView imageView_add;
+
 
     @BindView(R.id.pulltorefresh_listview_shouye)
     PullToRefreshListView  pullToRefreshListView;
@@ -146,6 +148,17 @@ public class ShouYeFragment extends Fragment {
             public Object instantiateItem(ViewGroup container, int position) {
                 int layoutId = resIDs[position%3];
                 View view = LayoutInflater.from(getActivity()).inflate(layoutId,viewpager,false);
+                if (position%3==0){
+                    View textview_food = view.findViewById(R.id.textview_food);
+                    textview_food.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent=new Intent(getActivity(), FoodActivity.class);
+                            intent.putExtra("city",tvcity.getText().toString());
+                            startActivity(intent);
+                        }
+                    });
+                }
                 container.addView(view);
                 return view;
             }
